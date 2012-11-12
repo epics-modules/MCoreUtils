@@ -1,0 +1,8 @@
+.*~
+O\..*/
+^bin/
+^db/
+^dbd/
+^html/
+^doc/
+QtC-.*
