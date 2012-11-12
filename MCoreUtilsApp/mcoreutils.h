@@ -14,6 +14,20 @@
  * @section scope Scope of this Document
  * This API documentation covers version 1.0 of the EPICS Multi-Core Utilities.
  *
+ * @section sources Sources
+ * Releases can be found at http://sourceforge.net/projects/epics/files/mcoreutils/
+ *
+ * The sources are versioned using [Mercurial](http://mercurial.selenic.com).
+ * They can be viewed at http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/
+ * or checked out using
+ * ~~~~
+ * hg clone http://epics.hg.sourceforge.net:8000/hgroot/epics/mcoreutils
+ * ~~~~
+ *
+ * @section requires Requirements
+ * @li Linux operating system
+ * @li [EPICS](http://www.aps.anl.gov/epics/) BASE >= 3.15.0.1
+ *
  * @section intro_sec Introduction
  * The EPICS Multi-Core Utilities library contains tools that allow
  * tweaking of real-time parameters for EPICS IOC threads running on
@@ -122,7 +136,7 @@ epicsShareFunc void mcoreThreadShowAll(unsigned int level);
  */
 
 /**
- * @defgroup threadrules Rule-Based Thread Property Modification
+ * @defgroup threadrules Rule-Based Thread Properties
  * @brief Allow user-specified rules that modify real-time properties of EPICS threads.
  * @{
  *

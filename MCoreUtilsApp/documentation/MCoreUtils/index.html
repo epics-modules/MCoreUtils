@@ -80,6 +80,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><h1><a class="anchor" id="scope"></a>
 Scope of this Document</h1>
 <p>This API documentation covers version 1.0 of the EPICS Multi-Core Utilities.</p>
+<h1><a class="anchor" id="sources"></a>
+Sources</h1>
+<p>Releases can be found at <a href="http://sourceforge.net/projects/epics/files/mcoreutils/">http://sourceforge.net/projects/epics/files/mcoreutils/</a></p>
+<p>The sources are versioned using <a href="http://mercurial.selenic.com">Mercurial</a>. They can be viewed at <a href="http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/">http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/</a> or checked out using </p>
+<pre class="fragment">hg clone http://epics.hg.sourceforge.net:8000/hgroot/epics/mcoreutils
+</pre><h1><a class="anchor" id="requires"></a>
+Requirements</h1>
+<ul>
+<li>Linux operating system </li>
+<li><a href="http://www.aps.anl.gov/epics/">EPICS</a> BASE &gt;= 3.15.0.1</li>
+</ul>
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
 <p>The EPICS Multi-Core Utilities library contains tools that allow tweaking of real-time parameters for EPICS IOC threads running on multi-core processors under the Linux operating system.</p>
@@ -97,13 +108,13 @@ Advanced Thread Show Routines</h2>
 Rule Based Real-Time Property Manipulation</h2>
 <p>A module allowing to specify rules, which consist of a regular expression to match the thread name against, and a set of commands that allow to specify the real-time properties of a thread.</p>
 <p>Whenever the EPICS IOC starts a thread, its name is matched against all existing rules, and for matching rules the commands are applied.</p>
-<p>Details can be found in the documentation for module <a class="el" href="group__threadrules.html">Rule-Based Thread Property Modification</a>.</p>
+<p>Details can be found in the documentation for module <a class="el" href="group__threadrules.html">Rule-Based Thread Properties</a>.</p>
 <dl class="section warning"><dt>Warning</dt><dd>The default priorities of the EPICS IOC threads are well-chosen. They have been proven to ensure reliable IOC operation and communication, in many installations, under a variety of circumstances. <br/>
  Manipulating the real-time properties, especially scheduling policies and priorities, may have unwanted side effects. Use this feature sparingly, and test well. </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 12 2012 13:29:03 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 12 2012 14:35:24 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
