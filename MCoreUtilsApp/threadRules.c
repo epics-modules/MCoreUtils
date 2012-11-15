@@ -330,7 +330,7 @@ static void readRulesFromFile(const char *file)
             if ((sp = strpbrk(cp, "\n\r"))) {
                 *sp = '\0';
             }
-            mcoreThreadRuleAdd(args[0], args[4], args[1], args[2], args[3]);
+            mcoreThreadRuleAdd(args[0], args[1], args[2], args[3], args[4]);
         }
         fclose (fp);
     }
