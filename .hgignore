@@ -1,8 +1,11 @@
 .*~
 O\..*/
 ^bin/
+^lib/
 ^db/
 ^dbd/
 ^html/
 ^doc/
 QtC-.*
+/envPaths$
+/core$
