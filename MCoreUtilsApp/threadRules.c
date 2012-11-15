@@ -343,9 +343,6 @@ static void once(void *arg)
     char userFile[len];
     char userRel[len];
 
-    //FIXME
-    errVerbose=1;
-
     cpuspecLen = (int) (log10(NO_OF_CPUS-1) + 2) * NO_OF_CPUS / 2;
     if (cpuspecLen < 10)
         cpuspecLen = 10;
