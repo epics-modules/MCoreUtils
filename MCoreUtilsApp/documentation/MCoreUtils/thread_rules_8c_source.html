@@ -22,8 +22,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
-   <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux - Version 1.0</div>
+   <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
  </tr>
  </tbody>
@@ -358,7 +359,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordflow">if</span> ((sp = strpbrk(cp, <span class="stringliteral">&quot;\n\r&quot;</span>))) {</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                *sp = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            }</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <a class="code" href="group__threadrules.html#ga18d12b853a486a8761c8e69a2169d550" title="iocShell: Add or replace a thread rule.">mcoreThreadRuleAdd</a>(args[0], args[4], args[1], args[2], args[3]);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <a class="code" href="group__threadrules.html#ga18d12b853a486a8761c8e69a2169d550" title="iocShell: Add or replace a thread rule.">mcoreThreadRuleAdd</a>(args[0], args[1], args[2], args[3], args[4]);</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        }</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        fclose (fp);</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    }</div>
@@ -371,40 +372,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordtype">char</span> userFile[len];</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordtype">char</span> userRel[len];</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="comment">//FIXME</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    errVerbose=1;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    cpuspecLen = (int) (log10(<a class="code" href="utils_8h.html#a6939011fd8ec155dc2858538c94ce234">NO_OF_CPUS</a>-1) + 2) * <a class="code" href="utils_8h.html#a6939011fd8ec155dc2858538c94ce234">NO_OF_CPUS</a> / 2;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordflow">if</span> (cpuspecLen &lt; 10)</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        cpuspecLen = 10;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    listLock = epicsMutexMustCreate();</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    envGetConfigParam(&amp;userHome, <span class="keyword">sizeof</span>(userFile), userFile);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    envGetConfigParam(&amp;sysConfigFile, <span class="keyword">sizeof</span>(sysFile), sysFile);</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    envGetConfigParam(&amp;userConfigFile, <span class="keyword">sizeof</span>(userRel), userRel);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordflow">if</span> (userFile[strlen(userFile)-1] != <span class="charliteral">&#39;/&#39;</span>)</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        strcat(userFile, <span class="stringliteral">&quot;/&quot;</span>);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    strncat(userFile, userRel, len-strlen(userFile)-1);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    cpuspecLen = (int) (log10(<a class="code" href="utils_8h.html#a6939011fd8ec155dc2858538c94ce234">NO_OF_CPUS</a>-1) + 2) * <a class="code" href="utils_8h.html#a6939011fd8ec155dc2858538c94ce234">NO_OF_CPUS</a> / 2;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">if</span> (cpuspecLen &lt; 10)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        cpuspecLen = 10;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    listLock = epicsMutexMustCreate();</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    envGetConfigParam(&amp;userHome, <span class="keyword">sizeof</span>(userFile), userFile);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    envGetConfigParam(&amp;sysConfigFile, <span class="keyword">sizeof</span>(sysFile), sysFile);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    envGetConfigParam(&amp;userConfigFile, <span class="keyword">sizeof</span>(userRel), userRel);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordflow">if</span> (userFile[strlen(userFile)-1] != <span class="charliteral">&#39;/&#39;</span>)</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        strcat(userFile, <span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    strncat(userFile, userRel, len-strlen(userFile)-1);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    printf(<span class="stringliteral">&quot;Reading from %s\n&quot;</span>, sysFile);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    readRulesFromFile(sysFile);</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    printf(<span class="stringliteral">&quot;Reading from %s\n&quot;</span>, sysFile);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    readRulesFromFile(sysFile);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    printf(<span class="stringliteral">&quot;Reading from %s\n&quot;</span>, userFile);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    readRulesFromFile(userFile);</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    printf(<span class="stringliteral">&quot;Reading from %s\n&quot;</span>, userFile);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    readRulesFromFile(userFile);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    epicsThreadHookAdd(threadStartHook);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    epicsThreadHookAdd(threadStartHook);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;}</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
-<div class="line"><a name="l00373"></a><span class="lineno"><a class="code" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b">  373</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b" title="Initialization routine.">mcoreThreadRulesInit</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;{</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keyword">static</span> epicsThreadOnceId onceFlag = EPICS_THREAD_ONCE_INIT;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    epicsThreadOnce(&amp;onceFlag, once, NULL);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;}</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
+<div class="line"><a name="l00370"></a><span class="lineno"><a class="code" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b">  370</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b" title="Initialization routine.">mcoreThreadRulesInit</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;{</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keyword">static</span> epicsThreadOnceId onceFlag = EPICS_THREAD_ONCE_INIT;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    epicsThreadOnce(&amp;onceFlag, once, NULL);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;}</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 12 2012 14:39:37 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 15 2012 18:32:36 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

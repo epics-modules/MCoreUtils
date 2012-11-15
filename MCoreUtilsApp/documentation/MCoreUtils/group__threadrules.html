@@ -22,8 +22,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
-   <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux - Version 1.0</div>
+   <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
  </tr>
  </tbody>
@@ -137,7 +138,7 @@ Functions</h2></td></tr>
 <dt><code>EPICS_MCORE_SYSCONFIG</code>  </dt>
 <dd>name of system configuration file (default: <code>/etc/rtrules</code>) </dd>
 <dt><code>EPICS_MCORE_USERCONFIG</code>  </dt>
-<dd>name of user configuration file, relative to the HOME directory (default: <code>.rtrules</code>) </dd>
+<dd>name of user configuration file, relative to the <code>HOME</code> directory (default: <code>.rtrules</code>) </dd>
 </dl>
 </dd></dl>
 <dl class="section user"><dt>Known Issues</dt><dd>A thread calling <code>epicsThreadSetPriority()</code> to set its priority while running may override the priorities defined in the rules at any time. </dd></dl>
@@ -323,7 +324,7 @@ Functions</h2></td></tr>
 <p>Initialization routine. </p>
 <p>Must be called before using any of the other functions, which is done when registering the iocsh commands. </p>
 
-<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00373">373</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
+<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00370">370</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
 
 </div>
 </div>
@@ -352,7 +353,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 12 2012 14:39:37 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 15 2012 18:32:36 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

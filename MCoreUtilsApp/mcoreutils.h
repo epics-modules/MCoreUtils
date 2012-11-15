@@ -14,20 +14,6 @@
  * @section scope Scope of this Document
  * This API documentation covers version 1.0 of the EPICS Multi-Core Utilities.
  *
- * @section sources Sources
- * Releases can be found at http://sourceforge.net/projects/epics/files/mcoreutils/
- *
- * The sources are versioned using [Mercurial](http://mercurial.selenic.com).
- * They can be viewed at http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/
- * or checked out using
- * ~~~~
- * hg clone http://epics.hg.sourceforge.net:8000/hgroot/epics/mcoreutils
- * ~~~~
- *
- * @section requires Requirements
- * @li Linux operating system
- * @li [EPICS](http://www.aps.anl.gov/epics/) BASE >= 3.15.0.1
- *
  * @section intro_sec Introduction
  * The EPICS Multi-Core Utilities library contains tools that allow
  * tweaking of real-time parameters for EPICS IOC threads running on
@@ -48,7 +34,6 @@
  *
  * Details can be found in the documentation for module @ref threadshow.
  *
- *
  * @subsection intro_rules Rule Based Real-Time Property Manipulation
  * A module allowing to specify rules, which consist of a regular expression
  * to match the thread name against, and a set of commands that allow to
@@ -67,6 +52,45 @@
  * Manipulating the real-time properties, especially
  * scheduling policies and priorities, may have unwanted side effects.
  * Use this feature sparingly, and test well.
+ *
+ * @section sources Sources
+ * Releases can be found at http://sourceforge.net/projects/epics/files/mcoreutils/
+ *
+ * The sources are versioned using [Mercurial](http://mercurial.selenic.com).
+ * They can be viewed at http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/
+ * or checked out using
+ * ~~~~
+ * hg clone http://epics.hg.sourceforge.net:8000/hgroot/epics/mcoreutils
+ * ~~~~
+ *
+ * @section requires Requirements
+ * @li Linux operating system
+ * @li [EPICS](http://www.aps.anl.gov/epics/) BASE >= 3.15.0.1
+ *
+ * @section Installation
+ * @li Unpack the distribution tar or check out the source tree.
+ * @li Run @c make
+ * @li To generate a minimal test IOC, run `make -C test`
+ *
+ * @section usage Usage
+ * To use the Multi-Core Utilities in an IOC application tree,
+ * you have to add a definition to `.../configure/RELEASE`
+ * that points to the location of the @c mcoreutils module.
+ *
+ * In the directory that builds your IOC binary, the @c Makefile has to
+ * make sure the IOC is only built for Linux. Then add the dbd file and
+ * the Library, e.g.:
+ * ~~~~
+ * ...
+ * PROD_IOC_Linux = mcutest
+ * ...
+ * mcutest_DBD += mcoreutils.dbd
+ * ...
+ * mcutest_LIBS += mcoreutils
+ * ...
+ * ~~~~
+ *
+ * That's it. Enjoy!
  */
 
 #ifndef MCOREUTILS_H
@@ -196,7 +220,7 @@ epicsShareFunc void mcoreThreadShowAll(unsigned int level);
  * <dt>@c EPICS_MCORE_SYSCONFIG</dt>
  * <dd>name of system configuration file (default: @c /etc/rtrules)</dd>
  * <dt>@c EPICS_MCORE_USERCONFIG</dt>
- * <dd>name of user configuration file, relative to the HOME directory (default: <tt>.rtrules</tt>)</dd>
+ * <dd>name of user configuration file, relative to the @c HOME directory (default: <tt>.rtrules</tt>)</dd>
  * </dl>
  *
  * @par Known Issues

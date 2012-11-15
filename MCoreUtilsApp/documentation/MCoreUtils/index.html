@@ -22,8 +22,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
-   <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux - Version 1.0</div>
+   <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
  </tr>
  </tbody>
@@ -80,17 +81,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><h1><a class="anchor" id="scope"></a>
 Scope of this Document</h1>
 <p>This API documentation covers version 1.0 of the EPICS Multi-Core Utilities.</p>
-<h1><a class="anchor" id="sources"></a>
-Sources</h1>
-<p>Releases can be found at <a href="http://sourceforge.net/projects/epics/files/mcoreutils/">http://sourceforge.net/projects/epics/files/mcoreutils/</a></p>
-<p>The sources are versioned using <a href="http://mercurial.selenic.com">Mercurial</a>. They can be viewed at <a href="http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/">http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/</a> or checked out using </p>
-<pre class="fragment">hg clone http://epics.hg.sourceforge.net:8000/hgroot/epics/mcoreutils
-</pre><h1><a class="anchor" id="requires"></a>
-Requirements</h1>
-<ul>
-<li>Linux operating system </li>
-<li><a href="http://www.aps.anl.gov/epics/">EPICS</a> BASE &gt;= 3.15.0.1</li>
-</ul>
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
 <p>The EPICS Multi-Core Utilities library contains tools that allow tweaking of real-time parameters for EPICS IOC threads running on multi-core processors under the Linux operating system.</p>
@@ -110,11 +100,41 @@ Rule Based Real-Time Property Manipulation</h2>
 <p>Whenever the EPICS IOC starts a thread, its name is matched against all existing rules, and for matching rules the commands are applied.</p>
 <p>Details can be found in the documentation for module <a class="el" href="group__threadrules.html">Rule-Based Thread Properties</a>.</p>
 <dl class="section warning"><dt>Warning</dt><dd>The default priorities of the EPICS IOC threads are well-chosen. They have been proven to ensure reliable IOC operation and communication, in many installations, under a variety of circumstances. <br/>
- Manipulating the real-time properties, especially scheduling policies and priorities, may have unwanted side effects. Use this feature sparingly, and test well. </dd></dl>
+ Manipulating the real-time properties, especially scheduling policies and priorities, may have unwanted side effects. Use this feature sparingly, and test well.</dd></dl>
+<h1><a class="anchor" id="sources"></a>
+Sources</h1>
+<p>Releases can be found at <a href="http://sourceforge.net/projects/epics/files/mcoreutils/">http://sourceforge.net/projects/epics/files/mcoreutils/</a></p>
+<p>The sources are versioned using <a href="http://mercurial.selenic.com">Mercurial</a>. They can be viewed at <a href="http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/">http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/</a> or checked out using </p>
+<pre class="fragment">hg clone http://epics.hg.sourceforge.net:8000/hgroot/epics/mcoreutils
+</pre><h1><a class="anchor" id="requires"></a>
+Requirements</h1>
+<ul>
+<li>Linux operating system </li>
+<li><a href="http://www.aps.anl.gov/epics/">EPICS</a> BASE &gt;= 3.15.0.1</li>
+</ul>
+<h1><a class="anchor" id="Installation"></a>
+Installation</h1>
+<ul>
+<li>Unpack the distribution tar or check out the source tree. </li>
+<li>Run <code>make</code> </li>
+<li>To generate a minimal test IOC, run <code>make -C test</code></li>
+</ul>
+<h1><a class="anchor" id="usage"></a>
+Usage</h1>
+<p>To use the Multi-Core Utilities in an IOC application tree, you have to add a definition to <code>.../configure/RELEASE</code> that points to the location of the <code>mcoreutils</code> module.</p>
+<p>In the directory that builds your IOC binary, the <code>Makefile</code> has to make sure the IOC is only built for Linux. Then add the dbd file and the Library, e.g.: </p>
+<pre class="fragment">...
+PROD_IOC_Linux = mcutest
+...
+mcutest_DBD += mcoreutils.dbd
+...
+mcutest_LIBS += mcoreutils
+...
+</pre><p>That's it. Enjoy! </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 12 2012 14:39:37 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 15 2012 18:32:36 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
