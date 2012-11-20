@@ -70,7 +70,7 @@
  * @section Installation
  * @li Unpack the distribution tar or check out the source tree.
  * @li Run @c make
- * @li To generate a minimal test IOC, run `make -C test`
+ * @li To generate a minimal example IOC, run `make -C example`
  *
  * @section usage Usage
  * To use the Multi-Core Utilities in an IOC application tree,
