@@ -94,6 +94,8 @@ static void parseModifiers(threadRule *prule, const char *policy, const char *pr
             prule->rel_priority = 1;
         }
         prule->priority = atoi(priority);
+        if (prule->priority > epicsThreadPriorityMax) prule->priority = epicsThreadPriorityMax;
+        if (prule->priority < epicsThreadPriorityMin) prule->priority = epicsThreadPriorityMin;
     }
     if (cpus && '*' != cpus[0] && '\0' != cpus[0]) {
         prule->ch_affinity = 1;
@@ -231,6 +233,8 @@ static void modifyRTProperties(epicsThreadId id, threadRule *prule)
         if (prule->ch_priority) {
             if (prule->rel_priority) {
                 priority = id->osiPriority + prule->priority;
+                if (priority > epicsThreadPriorityMax) priority = epicsThreadPriorityMax;
+                if (priority < epicsThreadPriorityMin) priority = epicsThreadPriorityMin;
             } else {
                 priority = prule->priority;
             }
