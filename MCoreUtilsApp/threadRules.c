@@ -67,8 +67,8 @@ typedef struct threadRule {
 static ELLLIST threadRules = ELLLIST_INIT;
 static epicsMutexId listLock;
 static unsigned int cpuspecLen;
+static char *sysConfigFile      = "/etc/rtrules";
 static ENV_PARAM userHome       = {"HOME","/"};
-static ENV_PARAM sysConfigFile  = {"EPICS_MCORE_SYSCONFIG","/etc/rtrules"};
 static ENV_PARAM userConfigFile = {"EPICS_MCORE_USERCONFIG",".rtrules"};
 
 /**
@@ -343,7 +343,6 @@ static void readRulesFromFile(const char *file)
 static void once(void *arg)
 {
     const int len = 256;
-    char sysFile[len];
     char userFile[len];
     char userRel[len];
 
@@ -353,14 +352,13 @@ static void once(void *arg)
     listLock = epicsMutexMustCreate();
 
     envGetConfigParam(&userHome, sizeof(userFile), userFile);
-    envGetConfigParam(&sysConfigFile, sizeof(sysFile), sysFile);
     envGetConfigParam(&userConfigFile, sizeof(userRel), userRel);
     if (userFile[strlen(userFile)-1] != '/')
         strcat(userFile, "/");
     strncat(userFile, userRel, len-strlen(userFile)-1);
 
-    printf("Reading from %s\n", sysFile);
-    readRulesFromFile(sysFile);
+    printf("Reading from %s\n", sysConfigFile);
+    readRulesFromFile(sysConfigFile);
 
     printf("Reading from %s\n", userFile);
     readRulesFromFile(userFile);

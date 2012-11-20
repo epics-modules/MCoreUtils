@@ -192,7 +192,7 @@ epicsShareFunc void mcoreThreadShowAll(unsigned int level);
  * for details on CPU affinity.
  *
  * @par Configuration Files
- * The module tries to read a system configuration file (default: @c /etc/rtrules)
+ * The module tries to read a system configuration file (@c /etc/rtrules)
  * and a user configuration file (default: <tt>$HOME/.rtrules</tt>) to create the initial
  * list of thread rules.
  * @par
@@ -217,8 +217,8 @@ epicsShareFunc void mcoreThreadShowAll(unsigned int level);
  *
  * @par Environment Variables
  * <dl>
- * <dt>@c EPICS_MCORE_SYSCONFIG</dt>
- * <dd>name of system configuration file (default: @c /etc/rtrules)</dd>
+ * <dt>@c HOME</dt>
+ * <dd>location of the @c HOME directory (default: <tt>/</tt>)</dd>
  * <dt>@c EPICS_MCORE_USERCONFIG</dt>
  * <dd>name of user configuration file, relative to the @c HOME directory (default: <tt>.rtrules</tt>)</dd>
  * </dl>

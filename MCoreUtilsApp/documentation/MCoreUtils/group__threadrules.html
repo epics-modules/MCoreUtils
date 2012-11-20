@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
@@ -116,7 +116,7 @@ Functions</h2></td></tr>
 </ul>
 <p>This is achieved by creating a linked list of rules, which consist of a regular expression pattern and modification instructions. A hook function is added to the EPICS thread creation module. The hook is called from every thread as part of its creation, matches the regular expression patterns of all rules against the name of the newly created thread, and applies the modifications of all rules that match.</p>
 <dl class="section see"><dt>See Also</dt><dd>See man pages for <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_setschedparam.3.html">pthread_setschedparam(3)</a> and <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/sched_setscheduler.2.html">sched_setscheduler(2)</a> for details on scheduling policy and priority, <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_setaffinity_np.3.html">pthread_setaffinity_np(3)</a> and <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/sched_setaffinity.2.html">sched_setaffinity(2)</a> for details on CPU affinity.</dd></dl>
-<dl class="section user"><dt>Configuration Files</dt><dd>The module tries to read a system configuration file (default: <code>/etc/rtrules</code>) and a user configuration file (default: <code>$HOME/.rtrules</code>) to create the initial list of thread rules. </dd></dl>
+<dl class="section user"><dt>Configuration Files</dt><dd>The module tries to read a system configuration file (<code>/etc/rtrules</code>) and a user configuration file (default: <code>$HOME/.rtrules</code>) to create the initial list of thread rules. </dd></dl>
 <dl class="section user"><dt></dt><dd>The file format is based on the format of the <code>/etc/rtgroups</code> file on RHEL-MRG. Each line has the format </dd></dl>
 <dl class="section user"><dt></dt><dd><code><b>name:policy:priority:affinity:pattern</b></code> </dd></dl>
 <dl class="section user"><dt></dt><dd><table  border="0">
@@ -135,8 +135,8 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section user"><dt></dt><dd>Lines starting with <code>#</code> (comments), and empty lines (containing only whitespace) are ignored.</dd></dl>
 <dl class="section user"><dt>Environment Variables</dt><dd><dl>
-<dt><code>EPICS_MCORE_SYSCONFIG</code>  </dt>
-<dd>name of system configuration file (default: <code>/etc/rtrules</code>) </dd>
+<dt><code>HOME</code>  </dt>
+<dd>location of the <code>HOME</code> directory (default: <code>/</code>) </dd>
 <dt><code>EPICS_MCORE_USERCONFIG</code>  </dt>
 <dd>name of user configuration file, relative to the <code>HOME</code> directory (default: <code>.rtrules</code>) </dd>
 </dl>
@@ -201,7 +201,7 @@ Functions</h2></td></tr>
 </table>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00285">285</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
+<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00289">289</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
 
 </div>
 </div>
@@ -273,7 +273,7 @@ Functions</h2></td></tr>
 </table>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00107">107</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
+<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00109">109</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
 
 </div>
 </div>
@@ -304,7 +304,7 @@ Functions</h2></td></tr>
 </table>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00138">138</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
+<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00140">140</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
 
 </div>
 </div>
@@ -324,7 +324,7 @@ Functions</h2></td></tr>
 <p>Initialization routine. </p>
 <p>Must be called before using any of the other functions, which is done when registering the iocsh commands. </p>
 
-<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00370">370</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
+<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00372">372</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
 
 </div>
 </div>
@@ -346,14 +346,14 @@ Functions</h2></td></tr>
 <p>Rule names are shortened to 16 characters.</p>
 <dl class="section user"><dt>IOC Shell</dt><dd><code><b>mcoreThreadRulesShow</b></code> </dd></dl>
 
-<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00163">163</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
+<p>Definition at line <a class="el" href="thread_rules_8c_source.html#l00165">165</a> of file <a class="el" href="thread_rules_8c_source.html">threadRules.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 15 2012 18:32:36 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 20 2012 17:15:05 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
