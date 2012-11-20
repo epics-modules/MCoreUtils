@@ -217,10 +217,10 @@ epicsShareFunc void mcoreThreadShowAll(unsigned int level);
  *
  * @par Environment Variables
  * <dl>
- * <dt>@c HOME</dt>
- * <dd>location of the @c HOME directory (default: <tt>/</tt>)</dd>
- * <dt>@c EPICS_MCORE_USERCONFIG</dt>
- * <dd>name of user configuration file, relative to the @c HOME directory (default: <tt>.rtrules</tt>)</dd>
+ * <dt>`HOME`</dt>
+ * <dd>location of the @c HOME directory (default: `/`)</dd>
+ * <dt>`EPICS_MCORE_USERCONFIG`</dt>
+ * <dd>name of user configuration file, relative to the @c HOME directory (default: `.rtrules`)</dd>
  * </dl>
  *
  * @par Known Issues
