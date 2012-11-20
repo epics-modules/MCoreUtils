@@ -299,14 +299,16 @@ void mcoreThreadModify(epicsThreadId id, const char *policy, const char *priorit
  * @brief Read a set of thread rules from a file.
  *
  * @param file
+ * @return number of rules read
  */
-static void readRulesFromFile(const char *file)
+static int readRulesFromFile(const char *file)
 {
     const int linelen = 256;
     const char sep = ':';
     char line[linelen];
     unsigned int lineno = 0;
     char *args[5];           // rtgroups format -- name:policy:priority:affinity:pattern
+    int count = 0;
 
     FILE *fp = fopen(file, "r");
     if (NULL == fp) {
@@ -326,7 +328,7 @@ static void readRulesFromFile(const char *file)
                 sp = strchr(cp, sep);
                 if (!sp) {
                     errlogPrintf("mcoreThreadRules: error parsing line %d of file %s\n", lineno, file);
-                    return;
+                    return count;
                 }
                 *sp++ = '\0';
                 args[i] = cp = sp;
@@ -335,9 +337,11 @@ static void readRulesFromFile(const char *file)
                 *sp = '\0';
             }
             mcoreThreadRuleAdd(args[0], args[1], args[2], args[3], args[4]);
+            count++;
         }
         fclose (fp);
     }
+    return count;
 }
 
 static void once(void *arg)
@@ -345,6 +349,7 @@ static void once(void *arg)
     const int len = 256;
     char userFile[len];
     char userRel[len];
+    int count;
 
     cpuspecLen = (int) (log10(NO_OF_CPUS-1) + 2) * NO_OF_CPUS / 2;
     if (cpuspecLen < 10)
@@ -357,11 +362,11 @@ static void once(void *arg)
         strcat(userFile, "/");
     strncat(userFile, userRel, len-strlen(userFile)-1);
 
-    printf("Reading from %s\n", sysConfigFile);
-    readRulesFromFile(sysConfigFile);
+    count = readRulesFromFile(sysConfigFile);
+    printf("MCoreUtils: Read %d thread rule(s) from %s\n", count, sysConfigFile);
 
-    printf("Reading from %s\n", userFile);
-    readRulesFromFile(userFile);
+    count = readRulesFromFile(userFile);
+    printf("MCoreUtils: Read %d thread rule(s) from %s\n", count, userFile);
 
     epicsThreadHookAdd(threadStartHook);
 }
