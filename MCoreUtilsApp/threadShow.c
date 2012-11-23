@@ -144,6 +144,7 @@ static void once(void *arg)
     cpuDigits = (int) log10(NO_OF_CPUS-1) + 1;
     if (!buffer)  buffer  = (char *) calloc(cpuDigits+2, sizeof(char));
     if (!cpuspec) cpuspec = (char *) calloc(NO_OF_CPUS + 2, sizeof(char));
+    printf("MCoreUtils version " VERSION "\n");
 }
 
 /**
