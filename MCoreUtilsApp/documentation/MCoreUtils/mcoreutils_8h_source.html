@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.1.1</span>
    </div>
    <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
@@ -85,50 +85,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="mcoreutils_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/********************************************/</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#ifndef MCOREUTILS_H</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MCOREUTILS_H</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#include &lt;epicsThread.h&gt;</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#include &lt;shareLib.h&gt;</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e" title="Initialization routine.">mcoreThreadShowInit</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadshow.html#ga77e23d45777148e7bb45a7997dd691e3" title="iocShell: Show thread info for one thread.">mcoreThreadShow</a>(epicsThreadId thread, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadshow.html#ga550f2463816f46860faf938296aeb121" title="iocShell: Show thread info for all threads.">mcoreThreadShowAll</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#ga333954c6a31569816a724b222e5f0fb1" title="iocShell: Modify a thread&#39;s real-time properties.">mcoreThreadModify</a>(epicsThreadId <span class="keywordtype">id</span>,</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                      <span class="keyword">const</span> <span class="keywordtype">char</span> *policy,</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                      <span class="keyword">const</span> <span class="keywordtype">char</span> *priority,</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                      <span class="keyword">const</span> <span class="keywordtype">char</span> *cpus);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b" title="Initialization routine.">mcoreThreadRulesInit</a>();</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;epicsShareFunc <span class="keywordtype">long</span> <a class="code" href="group__threadrules.html#ga18d12b853a486a8761c8e69a2169d550" title="iocShell: Add or replace a thread rule.">mcoreThreadRuleAdd</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name,</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *policy,</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *priority,</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *cpus,</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *pattern);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#ga82b39f3e0f24bed2e91885b4b96d9cb1" title="iocShell: Delete a thread rule.">mcoreThreadRuleDelete</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#gad22f782c58f3b2550b718cd3c25d7898" title="iocShell: Print a comprehensive list of the thread rules.">mcoreThreadRulesShow</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="preprocessor">#endif // MCOREUTILS_H</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#ifndef MCOREUTILS_H</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MCOREUTILS_H</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#include &lt;epicsThread.h&gt;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#include &lt;shareLib.h&gt;</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e" title="Initialization routine.">mcoreThreadShowInit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadshow.html#ga77e23d45777148e7bb45a7997dd691e3" title="iocShell: Show thread info for one thread.">mcoreThreadShow</a>(epicsThreadId thread, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadshow.html#ga550f2463816f46860faf938296aeb121" title="iocShell: Show thread info for all threads.">mcoreThreadShowAll</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#ga333954c6a31569816a724b222e5f0fb1" title="iocShell: Modify a thread&#39;s real-time properties.">mcoreThreadModify</a>(epicsThreadId <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                      <span class="keyword">const</span> <span class="keywordtype">char</span> *policy,</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                      <span class="keyword">const</span> <span class="keywordtype">char</span> *priority,</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                                      <span class="keyword">const</span> <span class="keywordtype">char</span> *cpus);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b" title="Initialization routine.">mcoreThreadRulesInit</a>();</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;epicsShareFunc <span class="keywordtype">long</span> <a class="code" href="group__threadrules.html#ga18d12b853a486a8761c8e69a2169d550" title="iocShell: Add or replace a thread rule.">mcoreThreadRuleAdd</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name,</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *policy,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *priority,</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *cpus,</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> *pattern);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#ga82b39f3e0f24bed2e91885b4b96d9cb1" title="iocShell: Delete a thread rule.">mcoreThreadRuleDelete</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;epicsShareFunc <span class="keywordtype">void</span> <a class="code" href="group__threadrules.html#gad22f782c58f3b2550b718cd3c25d7898" title="iocShell: Print a comprehensive list of the thread rules.">mcoreThreadRulesShow</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor">#endif // MCOREUTILS_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 20 2012 17:49:37 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 23 2012 18:15:28 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

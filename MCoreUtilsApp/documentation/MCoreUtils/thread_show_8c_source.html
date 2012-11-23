@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
-   &#160;<span id="projectnumber">1.1.0</span>
+   &#160;<span id="projectnumber">1.1.1</span>
    </div>
    <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
@@ -189,18 +189,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <a class="code" href="utils_8c.html#a985308b0b0063ae146858f647a50ca1a" title="Number of digits needed for a single CPU spec.">cpuDigits</a> = (int) log10(<a class="code" href="utils_8h.html#a6939011fd8ec155dc2858538c94ce234">NO_OF_CPUS</a>-1) + 1;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">if</span> (!buffer)  buffer  = (<span class="keywordtype">char</span> *) calloc(<a class="code" href="utils_8c.html#a985308b0b0063ae146858f647a50ca1a" title="Number of digits needed for a single CPU spec.">cpuDigits</a>+2, <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> (!cpuspec) cpuspec = (<span class="keywordtype">char</span> *) calloc(<a class="code" href="utils_8h.html#a6939011fd8ec155dc2858538c94ce234">NO_OF_CPUS</a> + 2, <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno"><a class="code" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e">  152</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e" title="Initialization routine.">mcoreThreadShowInit</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keyword">static</span> epicsThreadOnceId onceFlag = EPICS_THREAD_ONCE_INIT;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    epicsThreadOnce(&amp;onceFlag, once, NULL);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    printf(<span class="stringliteral">&quot;MCoreUtils version &quot;</span> VERSION <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="code" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e">  153</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e" title="Initialization routine.">mcoreThreadShowInit</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">static</span> epicsThreadOnceId onceFlag = EPICS_THREAD_ONCE_INIT;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    epicsThreadOnce(&amp;onceFlag, once, NULL);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 20 2012 17:49:37 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 23 2012 18:15:28 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
