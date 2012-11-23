@@ -12,7 +12,8 @@
  * @mainpage EPICS Multi-Core Utilities
  *
  * @section scope Scope of this Document
- * This API documentation covers version 1.0 of the EPICS Multi-Core Utilities.
+ * This documentation covers the C API and the iocShell commands of the
+ * EPICS Multi-Core Utilities.
  *
  * @section intro_sec Introduction
  * The EPICS Multi-Core Utilities library contains tools that allow
