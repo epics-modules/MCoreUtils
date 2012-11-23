@@ -9,6 +9,8 @@ include $(TOP)/configure/CONFIG
 # Re-generate it by calling
 #    make doxy
 
+VERSION = 1.1.1
+
 #==================================================
 # build a support library  (Linux ONLY)
 
@@ -28,7 +30,7 @@ mcoreutils_LIBS += $(EPICS_BASE_IOC_LIBS)
 INSTALL_DOCS += $(INSTALL_HTML)/MCoreUtils
 DOCS += MCoreUtils.pdf
 
-USR_CFLAGS = -D_GNU_SOURCE
+USR_CFLAGS = -D_GNU_SOURCE -DVERSION=\"$(VERSION)\"
 
 #===========================
 
@@ -52,7 +54,7 @@ doxy:
 	@$(MKDIR) -p O.Common/doxy
 	@$(RMDIR) documentation
 	@$(MKDIR) -p documentation/MCoreUtils
-	@doxygen
+	@( cat Doxyfile ; echo "PROJECT_NUMBER=$(VERSION)" ) | doxygen -
 	@make -C O.Common/doxy/latex
 	@$(CP) O.Common/doxy/latex/refman.pdf documentation/MCoreUtils.pdf
 	@$(CP) -rT O.Common/doxy/html documentation/MCoreUtils
