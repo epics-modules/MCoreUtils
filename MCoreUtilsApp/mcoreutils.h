@@ -66,7 +66,7 @@
  *
  * @section requires Requirements
  * @li Linux operating system
- * @li [EPICS](http://www.aps.anl.gov/epics/) BASE >= 3.15.0.1
+ * @li [EPICS](http://www.aps.anl.gov/epics/) BASE 3.15 trunk
  *
  * @section Installation
  * @li Unpack the distribution tar or check out the source tree.
