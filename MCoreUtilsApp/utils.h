@@ -17,6 +17,7 @@
 
 #include <errlog.h>
 
+// TODO: Use libCom call when get-cpus branch is merged
 #define NO_OF_CPUS sysconf(_SC_NPROCESSORS_CONF)
 
 #define checkStatus(status,message) \
