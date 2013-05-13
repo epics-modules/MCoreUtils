@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
-   &#160;<span id="projectnumber">1.1.1</span>
+   &#160;<span id="projectnumber">1.1.2-SNAPSHOT</span>
    </div>
    <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
@@ -88,7 +88,8 @@ Introduction</h1>
 <ul>
 <li>Confining either parts or the complete EPICS IOC onto a subset of the available cores, allowing hard real-time applications and threads to run on dedicated cores. </li>
 <li>Changing priorities of callback, driver or communication threads with respect to database processing. </li>
-<li>Selecting real-time scheduling policy (FIFO or Round-Robin) for selected threads.</li>
+<li>Selecting real-time scheduling policy (FIFO or Round-Robin) for selected threads. </li>
+<li>Locking the IOC process virtual memory into RAM to avoid swapping.</li>
 </ul>
 <h2><a class="anchor" id="intro_show"></a>
 Advanced Thread Show Routines</h2>
@@ -101,6 +102,10 @@ Rule Based Real-Time Property Manipulation</h2>
 <p>Details can be found in the documentation for module <a class="el" href="group__threadrules.html">Rule-Based Thread Properties</a>.</p>
 <dl class="section warning"><dt>Warning</dt><dd>The default priorities of the EPICS IOC threads are well-chosen. They have been proven to ensure reliable IOC operation and communication, in many installations, under a variety of circumstances. <br/>
  Manipulating the real-time properties, especially scheduling policies and priorities, may have unwanted side effects. Use this feature sparingly, and test well.</dd></dl>
+<h2><a class="anchor" id="intro_memlock"></a>
+Memory Locking</h2>
+<p>A module allowing to lock the IOC process virtual memory into RAM. This makes sure that no swapping occurs, and thus avoids page faults which would introduce latency and lead to indeterministic timing.</p>
+<p>Details can be found in the documentation for module <a class="el" href="group__memlock.html">Memory Locking</a>.</p>
 <h1><a class="anchor" id="sources"></a>
 Sources</h1>
 <p>Releases can be found at <a href="http://sourceforge.net/projects/epics/files/mcoreutils/">http://sourceforge.net/projects/epics/files/mcoreutils/</a></p>
@@ -110,7 +115,7 @@ Sources</h1>
 Requirements</h1>
 <ul>
 <li>Linux operating system </li>
-<li><a href="http://www.aps.anl.gov/epics/">EPICS</a> BASE &gt;= 3.15.0.1</li>
+<li><a href="http://www.aps.anl.gov/epics/">EPICS</a> BASE 3.15 trunk</li>
 </ul>
 <h1><a class="anchor" id="Installation"></a>
 Installation</h1>
@@ -134,7 +139,7 @@ mcutest_LIBS += mcoreutils
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 23 2012 18:15:28 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 13 2013 14:21:07 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

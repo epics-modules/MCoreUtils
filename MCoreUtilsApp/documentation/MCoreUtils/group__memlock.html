@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>EPICS Multi-Core Utilities: Globals</title>
+<title>EPICS Multi-Core Utilities: Memory Locking</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,7 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -58,21 +58,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li class="current"><a href="globals.html"><span>Globals</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li><a href="globals.html"><span>All</span></a></li>
-      <li class="current"><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
-      <li><a href="globals_type.html"><span>Typedefs</span></a></li>
-      <li><a href="globals_defs.html"><span>Macros</span></a></li>
-    </ul>
-  </div>
 </div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -88,65 +73,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div class="header">
+  <div class="summary">
+<a href="#files">Files</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">Memory Locking</div>  </div>
+</div><!--header-->
 <div class="contents">
-&#160;<ul>
-<li>cpusetToStr()
-: <a class="el" href="utils_8c.html#a983c1ccc2e8503ee846857669221cf56">utils.c</a>
-, <a class="el" href="utils_8h.html#a983c1ccc2e8503ee846857669221cf56">utils.h</a>
-</li>
-<li>mcoreMLock()
-: <a class="el" href="group__memlock.html#ga401b966ea0ad8c0d74c6aa4fe1b1bbca">mcoreutils.h</a>
-, <a class="el" href="group__memlock.html#ga401b966ea0ad8c0d74c6aa4fe1b1bbca">memLock.c</a>
-</li>
-<li>mcoreMUnlock()
-: <a class="el" href="group__memlock.html#ga2be3b3dce5d3aa59fd03a58ad6837f75">memLock.c</a>
-, <a class="el" href="group__memlock.html#ga2be3b3dce5d3aa59fd03a58ad6837f75">mcoreutils.h</a>
-</li>
-<li>mcoreThreadModify()
-: <a class="el" href="group__threadrules.html#ga333954c6a31569816a724b222e5f0fb1">mcoreutils.h</a>
-, <a class="el" href="group__threadrules.html#ga333954c6a31569816a724b222e5f0fb1">threadRules.c</a>
-</li>
-<li>mcoreThreadRuleAdd()
-: <a class="el" href="group__threadrules.html#ga18d12b853a486a8761c8e69a2169d550">threadRules.c</a>
-, <a class="el" href="group__threadrules.html#ga18d12b853a486a8761c8e69a2169d550">mcoreutils.h</a>
-</li>
-<li>mcoreThreadRuleDelete()
-: <a class="el" href="group__threadrules.html#ga82b39f3e0f24bed2e91885b4b96d9cb1">mcoreutils.h</a>
-, <a class="el" href="group__threadrules.html#ga82b39f3e0f24bed2e91885b4b96d9cb1">threadRules.c</a>
-</li>
-<li>mcoreThreadRulesInit()
-: <a class="el" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b">mcoreutils.h</a>
-, <a class="el" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b">threadRules.c</a>
-</li>
-<li>mcoreThreadRulesShow()
-: <a class="el" href="group__threadrules.html#gad22f782c58f3b2550b718cd3c25d7898">mcoreutils.h</a>
-, <a class="el" href="group__threadrules.html#gad22f782c58f3b2550b718cd3c25d7898">threadRules.c</a>
-</li>
-<li>mcoreThreadShow()
-: <a class="el" href="group__threadshow.html#ga77e23d45777148e7bb45a7997dd691e3">mcoreutils.h</a>
-, <a class="el" href="group__threadshow.html#ga77e23d45777148e7bb45a7997dd691e3">threadShow.c</a>
-</li>
-<li>mcoreThreadShowAll()
-: <a class="el" href="group__threadshow.html#ga550f2463816f46860faf938296aeb121">threadShow.c</a>
-, <a class="el" href="group__threadshow.html#ga550f2463816f46860faf938296aeb121">mcoreutils.h</a>
-</li>
-<li>mcoreThreadShowInit()
-: <a class="el" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e">threadShow.c</a>
-, <a class="el" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e">mcoreutils.h</a>
-</li>
-<li>policyToStr()
-: <a class="el" href="utils_8c.html#a019af5b0ffa867626df68bbe96bb9f6c">utils.c</a>
-, <a class="el" href="utils_8h.html#a019af5b0ffa867626df68bbe96bb9f6c">utils.h</a>
-</li>
-<li>strToCpuset()
-: <a class="el" href="utils_8c.html#ad405aa8592b6ef61200f0dbd32948719">utils.c</a>
-, <a class="el" href="utils_8h.html#ad405aa8592b6ef61200f0dbd32948719">utils.h</a>
-</li>
-<li>strToPolicy()
-: <a class="el" href="utils_8c.html#adc99971cfe04af3f01ce2e30c095ee1c">utils.c</a>
-, <a class="el" href="utils_8h.html#adc99971cfe04af3f01ce2e30c095ee1c">utils.h</a>
-</li>
-</ul>
+
+<p>Add functions for locking the process memory into RAM.  
+<a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:mem_lock_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_lock_8c.html">memLock.c</a></td></tr>
+<tr class="memdesc:mem_lock_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locking process memory into RAM. <br/></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga401b966ea0ad8c0d74c6aa4fe1b1bbca"><td class="memItemLeft" align="right" valign="top">epicsShareFunc void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memlock.html#ga401b966ea0ad8c0d74c6aa4fe1b1bbca">mcoreMLock</a> (void)</td></tr>
+<tr class="memdesc:ga401b966ea0ad8c0d74c6aa4fe1b1bbca"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>iocShell:</b> Lock all process virtual memory into RAM.  <a href="#ga401b966ea0ad8c0d74c6aa4fe1b1bbca"></a><br/></td></tr>
+<tr class="memitem:ga2be3b3dce5d3aa59fd03a58ad6837f75"><td class="memItemLeft" align="right" valign="top">epicsShareFunc void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__memlock.html#ga2be3b3dce5d3aa59fd03a58ad6837f75">mcoreMUnlock</a> (void)</td></tr>
+<tr class="memdesc:ga2be3b3dce5d3aa59fd03a58ad6837f75"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>iocShell:</b> Unlock process virtual memory from RAM.  <a href="#ga2be3b3dce5d3aa59fd03a58ad6837f75"></a><br/></td></tr>
+</table>
+<a name="details" id="details"></a><h2>Detailed Description</h2>
+<p>Add functions for locking the process memory into RAM. </p>
+<p>Adds functions that allow locking and unlocking the process virtual memory into RAM to make sure no page faults occur, which would introduce unpredictable interruptions and latency.</p>
+<dl class="section see"><dt>See Also</dt><dd>See man page for <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/mlockall.2.html">mlockall(2)</a> for more details on memory locking. </dd></dl>
+<h2>Function Documentation</h2>
+<a class="anchor" id="ga401b966ea0ad8c0d74c6aa4fe1b1bbca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">epicsShareFunc void mcoreMLock </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><b>iocShell:</b> Lock all process virtual memory into RAM. </p>
+<dl class="section user"><dt>IOC Shell</dt><dd><code><b>mcoreMLock</b></code> </dd></dl>
+
+<p>Definition at line <a class="el" href="mem_lock_8c_source.html#l00032">32</a> of file <a class="el" href="mem_lock_8c_source.html">memLock.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga2be3b3dce5d3aa59fd03a58ad6837f75"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">epicsShareFunc void mcoreMUnlock </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><b>iocShell:</b> Unlock process virtual memory from RAM. </p>
+<dl class="section user"><dt>IOC Shell</dt><dd><code><b>mcoreMUnlock</b></code> </dd></dl>
+
+<p>Definition at line <a class="el" href="mem_lock_8c_source.html#l00038">38</a> of file <a class="el" href="mem_lock_8c_source.html">memLock.c</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

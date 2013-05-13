@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
-   &#160;<span id="projectnumber">1.1.1</span>
+   &#160;<span id="projectnumber">1.1.2-SNAPSHOT</span>
    </div>
    <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
@@ -216,26 +216,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <a class="code" href="group__threadrules.html#ga333954c6a31569816a724b222e5f0fb1" title="iocShell: Modify a thread&#39;s real-time properties.">mcoreThreadModify</a>(tid, args[1].sval, args[2].sval, args[3].sval);</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> mcoreRegister(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> firstTime = 1;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span>(!firstTime) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    firstTime = 0;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> iocshFuncDef mcoreMLockDef =</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    {<span class="stringliteral">&quot;mcoreMLock&quot;</span>, 0, NULL};</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> mcoreMLockCall(<span class="keyword">const</span> iocshArgBuf * args) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="group__memlock.html#ga401b966ea0ad8c0d74c6aa4fe1b1bbca" title="iocShell: Lock all process virtual memory into RAM.">mcoreMLock</a>();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e" title="Initialization routine.">mcoreThreadShowInit</a>();</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b" title="Initialization routine.">mcoreThreadRulesInit</a>();</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    iocshRegister(&amp;mcoreThreadShowDef,       mcoreThreadShowCall);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    iocshRegister(&amp;mcoreThreadShowAllDef,    mcoreThreadShowAllCall);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    iocshRegister(&amp;mcoreThreadRuleAddDef,    mcoreThreadRuleAddCall);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    iocshRegister(&amp;mcoreThreadRuleDeleteDef, mcoreThreadRuleDeleteCall);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    iocshRegister(&amp;mcoreThreadRulesShowDef,  mcoreThreadRulesShowCall);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    iocshRegister(&amp;mcoreThreadModifyDef,     mcoreThreadModifyCall);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;epicsExportRegistrar(mcoreRegister);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> iocshFuncDef mcoreMUnlockDef =</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    {<span class="stringliteral">&quot;mcoreMUnlock&quot;</span>, 0, NULL};</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> mcoreMUnlockCall(<span class="keyword">const</span> iocshArgBuf * args) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="group__memlock.html#ga2be3b3dce5d3aa59fd03a58ad6837f75" title="iocShell: Unlock process virtual memory from RAM.">mcoreMUnlock</a>();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> mcoreRegister(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> firstTime = 1;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span>(!firstTime) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    firstTime = 0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="group__threadshow.html#gaf3a10d66389fc02c064644f70222a36e" title="Initialization routine.">mcoreThreadShowInit</a>();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="group__threadrules.html#gaf806b02cc93c8809e5ebe7104a9d699b" title="Initialization routine.">mcoreThreadRulesInit</a>();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    iocshRegister(&amp;mcoreThreadShowDef,       mcoreThreadShowCall);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    iocshRegister(&amp;mcoreThreadShowAllDef,    mcoreThreadShowAllCall);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    iocshRegister(&amp;mcoreThreadRuleAddDef,    mcoreThreadRuleAddCall);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    iocshRegister(&amp;mcoreThreadRuleDeleteDef, mcoreThreadRuleDeleteCall);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    iocshRegister(&amp;mcoreThreadRulesShowDef,  mcoreThreadRulesShowCall);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    iocshRegister(&amp;mcoreThreadModifyDef,     mcoreThreadModifyCall);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    iocshRegister(&amp;mcoreMLockDef,            mcoreMLockCall);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    iocshRegister(&amp;mcoreMUnlockDef,          mcoreMUnlockCall);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;epicsExportRegistrar(mcoreRegister);</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 23 2012 18:15:28 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 13 2013 14:21:07 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -145,6 +145,18 @@ static void mcoreThreadModifyCall(const iocshArgBuf * args) {
         mcoreThreadModify(tid, args[1].sval, args[2].sval, args[3].sval);
 }
 
+static const iocshFuncDef mcoreMLockDef =
+    {"mcoreMLock", 0, NULL};
+static void mcoreMLockCall(const iocshArgBuf * args) {
+    mcoreMLock();
+}
+
+static const iocshFuncDef mcoreMUnlockDef =
+    {"mcoreMUnlock", 0, NULL};
+static void mcoreMUnlockCall(const iocshArgBuf * args) {
+    mcoreMUnlock();
+}
+
 static void mcoreRegister(void)
 {
     static int firstTime = 1;
@@ -159,6 +171,8 @@ static void mcoreRegister(void)
     iocshRegister(&mcoreThreadRuleDeleteDef, mcoreThreadRuleDeleteCall);
     iocshRegister(&mcoreThreadRulesShowDef,  mcoreThreadRulesShowCall);
     iocshRegister(&mcoreThreadModifyDef,     mcoreThreadModifyCall);
+    iocshRegister(&mcoreMLockDef,            mcoreMLockCall);
+    iocshRegister(&mcoreMUnlockDef,          mcoreMUnlockCall);
 }
 /// @cond NEVER
 epicsExportRegistrar(mcoreRegister);

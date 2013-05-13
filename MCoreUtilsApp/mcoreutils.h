@@ -28,6 +28,7 @@
  * with respect to database processing.
  * @li Selecting real-time scheduling policy (FIFO or Round-Robin)
  * for selected threads.
+ * @li Locking the IOC process virtual memory into RAM to avoid swapping.
  *
  * @subsection intro_show Advanced Thread Show Routines
  * An extended version of the @c epicsThreadShow() command, showing
@@ -53,6 +54,13 @@
  * Manipulating the real-time properties, especially
  * scheduling policies and priorities, may have unwanted side effects.
  * Use this feature sparingly, and test well.
+ *
+ * @subsection intro_memlock Memory Locking
+ * A module allowing to lock the IOC process virtual memory into RAM.
+ * This makes sure that no swapping occurs, and thus avoids page faults
+ * which would introduce latency and lead to indeterministic timing.
+ *
+ * Details can be found in the documentation for module @ref memlock.
  *
  * @section sources Sources
  * Releases can be found at http://sourceforge.net/projects/epics/files/mcoreutils/
@@ -318,6 +326,40 @@ epicsShareFunc void mcoreThreadRuleDelete(const char *name);
  * <tt><b>mcoreThreadRulesShow</b></tt>
  */
 epicsShareFunc void mcoreThreadRulesShow(void);
+
+/**
+ * @}
+ */
+
+/**
+ * @defgroup memlock Memory Locking
+ * @brief Add functions for locking the process memory into RAM.
+ * @{
+ *
+ * Adds functions that allow locking and unlocking the process virtual
+ * memory into RAM to make sure no page faults occur, which would
+ * introduce unpredictable interruptions and latency.
+ *
+ * @sa See man page for
+ * <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/mlockall.2.html">mlockall(2)</a>
+ * for more details on memory locking.
+ */
+
+/**
+ * @brief @b iocShell: Lock all process virtual memory into RAM.
+
+ * @par IOC Shell
+ * <tt><b>mcoreMLock</b></tt>
+ */
+epicsShareFunc void mcoreMLock(void);
+
+/**
+ * @brief @b iocShell: Unlock process virtual memory from RAM.
+
+ * @par IOC Shell
+ * <tt><b>mcoreMUnlock</b></tt>
+ */
+epicsShareFunc void mcoreMUnlock(void);
 
 /**
  * @}

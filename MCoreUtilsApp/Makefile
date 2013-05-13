@@ -22,6 +22,7 @@ DBD += mcoreutils.dbd
 # specify all source files to be compiled and added to the library
 mcoreutils_SRCS += threadShow.c
 mcoreutils_SRCS += threadRules.c
+mcoreutils_SRCS += memLock.c
 mcoreutils_SRCS += shellCommands.c
 mcoreutils_SRCS += utils.c
 
