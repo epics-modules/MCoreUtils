@@ -51,7 +51,7 @@ static const char *policies;
 static void mcoreThreadShowPrint(epicsThreadOSD *pthreadInfo, unsigned int level)
 {
     if (!pthreadInfo) {
-        fprintf(epicsGetStdout(), "            NAME     EPICS ID   "
+        fprintf(epicsGetStdout(), "            NAME       EPICS ID   "
             "LWP ID   OSIPRI  OSSPRI  STATE  POLICY CPUSET\n");
     } else {
         struct sched_param param;
@@ -82,9 +82,10 @@ static void mcoreThreadShowPrint(epicsThreadOSD *pthreadInfo, unsigned int level
             }
         }
 
-        fprintf(epicsGetStdout(),"%16.16s %12p %8lu    %3d%8d %8.8s %7.7s %s\n",
-                pthreadInfo->name,(void *)
-                pthreadInfo,(unsigned long)pthreadInfo->lwpId,
+        fprintf(epicsGetStdout(),"%16.16s %14p %8lu    %3d%8d %8.8s %7.7s %s\n",
+                pthreadInfo->name,
+                (void *)pthreadInfo,
+                (unsigned long)pthreadInfo->lwpId,
                 pthreadInfo->osiPriority, priority,
                 pthreadInfo->isSuspended ? "SUSPEND" : "OK",
                 policies, cpuspec);
