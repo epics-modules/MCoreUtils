@@ -194,7 +194,7 @@ epicsShareFunc void mcoreThreadShowAll(unsigned int level);
  * name of the newly created thread, and applies the modifications of all
  * rules that match.
  *
- * @sa See man pages for
+ * See man pages for
  * <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_setschedparam.3.html">pthread_setschedparam(3)</a>
  * and <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/sched_setscheduler.2.html">sched_setscheduler(2)</a>
  * for details on scheduling policy and priority,
@@ -233,6 +233,13 @@ epicsShareFunc void mcoreThreadShowAll(unsigned int level);
  * <dt>`EPICS_MCORE_USERCONFIG`</dt>
  * <dd>name of user configuration file, relative to the @c HOME directory (default: `.rtrules`)</dd>
  * </dl>
+ *
+ * @par Linux Security
+ * To change its scheduling policy and priority, under modern Linux systems the process must have an @c rtprio
+ * entry in the pam limits module configuration.
+ * @par
+ * See the <a href="http://linux.die.net/man/5/limits.conf">limits.conf(5)</a>
+ * man page for details.
  *
  * @par Known Issues
  * A thread calling @c epicsThreadSetPriority() to set its priority while running may override
@@ -342,9 +349,16 @@ epicsShareFunc void mcoreThreadRulesShow(void);
  * memory into RAM to make sure no page faults occur, which would
  * introduce unpredictable interruptions and latency.
  *
- * @sa See man page for
+ * See man page for
  * <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/mlockall.2.html">mlockall(2)</a>
  * for more details on memory locking.
+
+ * @par Linux Security
+ * To allow locking all its memory, under modern Linux systems the process must have a @c memlock
+ * entry in the pam limits module configuration.
+ * @par
+ * See the <a href="http://linux.die.net/man/5/limits.conf">limits.conf(5)</a>
+ * man page for details.
  */
 
 /**
