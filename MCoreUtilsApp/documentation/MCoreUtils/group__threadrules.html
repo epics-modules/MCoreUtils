@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
-   &#160;<span id="projectnumber">1.1.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">1.2</span>
    </div>
    <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
@@ -115,7 +115,7 @@ Functions</h2></td></tr>
  Set of CPUs that this thread is allowed to run on.</li>
 </ul>
 <p>This is achieved by creating a linked list of rules, which consist of a regular expression pattern and modification instructions. A hook function is added to the EPICS thread creation module. The hook is called from every thread as part of its creation, matches the regular expression patterns of all rules against the name of the newly created thread, and applies the modifications of all rules that match.</p>
-<dl class="section see"><dt>See Also</dt><dd>See man pages for <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_setschedparam.3.html">pthread_setschedparam(3)</a> and <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/sched_setscheduler.2.html">sched_setscheduler(2)</a> for details on scheduling policy and priority, <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_setaffinity_np.3.html">pthread_setaffinity_np(3)</a> and <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/sched_setaffinity.2.html">sched_setaffinity(2)</a> for details on CPU affinity.</dd></dl>
+<p>See man pages for <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_setschedparam.3.html">pthread_setschedparam(3)</a> and <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/sched_setscheduler.2.html">sched_setscheduler(2)</a> for details on scheduling policy and priority, <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_setaffinity_np.3.html">pthread_setaffinity_np(3)</a> and <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/sched_setaffinity.2.html">sched_setaffinity(2)</a> for details on CPU affinity.</p>
 <dl class="section user"><dt>Configuration Files</dt><dd>The module tries to read a system configuration file (<code>/etc/rtrules</code>) and a user configuration file (default: <code>$HOME/.rtrules</code>) to create the initial list of thread rules. </dd></dl>
 <dl class="section user"><dt></dt><dd>The file format is based on the format of the <code>/etc/rtgroups</code> file on RHEL-MRG. Each line has the format </dd></dl>
 <dl class="section user"><dt></dt><dd><code><b>name:policy:priority:affinity:pattern</b></code> </dd></dl>
@@ -141,6 +141,8 @@ Functions</h2></td></tr>
 <dd>name of user configuration file, relative to the <code>HOME</code> directory (default: <code>.rtrules</code>) </dd>
 </dl>
 </dd></dl>
+<dl class="section user"><dt>Linux Security</dt><dd>To change its scheduling policy and priority, under modern Linux systems the process must have an <code>rtprio</code> entry in the pam limits module configuration. </dd></dl>
+<dl class="section user"><dt></dt><dd>See the <a href="http://linux.die.net/man/5/limits.conf">limits.conf(5)</a> man page for details.</dd></dl>
 <dl class="section user"><dt>Known Issues</dt><dd>A thread calling <code>epicsThreadSetPriority()</code> to set its priority while running may override the priorities defined in the rules at any time. </dd></dl>
 <h2>Function Documentation</h2>
 <a class="anchor" id="ga333954c6a31569816a724b222e5f0fb1"></a>
@@ -353,7 +355,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 13 2013 14:21:07 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 14 2013 13:47:54 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

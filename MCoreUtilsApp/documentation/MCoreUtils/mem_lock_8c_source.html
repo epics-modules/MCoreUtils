@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
-   &#160;<span id="projectnumber">1.1.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">1.2</span>
    </div>
    <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
@@ -86,31 +86,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="mem_lock_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/********************************************/</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;sys/mman.h&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;errlog.h&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;shareLib.h&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define epicsExportSharedSymbols</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mcoreutils_8h.html">mcoreutils.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="group__memlock.html#ga401b966ea0ad8c0d74c6aa4fe1b1bbca">   32</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__memlock.html#ga401b966ea0ad8c0d74c6aa4fe1b1bbca" title="iocShell: Lock all process virtual memory into RAM.">mcoreMLock</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (mlockall(MCL_CURRENT|MCL_FUTURE)) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        errlogPrintf(<span class="stringliteral">&quot;mcoreMLock: mlockall() failed\n&quot;</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="group__memlock.html#ga2be3b3dce5d3aa59fd03a58ad6837f75">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__memlock.html#ga2be3b3dce5d3aa59fd03a58ad6837f75" title="iocShell: Unlock process virtual memory from RAM.">mcoreMUnlock</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (munlockall()) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        errlogPrintf(<span class="stringliteral">&quot;mcoreMLock: munlockall() failed\n&quot;</span>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;sys/mman.h&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;errlog.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;shareLib.h&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define epicsExportSharedSymbols</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mcoreutils_8h.html">mcoreutils.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="group__memlock.html#ga401b966ea0ad8c0d74c6aa4fe1b1bbca">   34</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__memlock.html#ga401b966ea0ad8c0d74c6aa4fe1b1bbca" title="iocShell: Lock all process virtual memory into RAM.">mcoreMLock</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> (mlockall(MCL_CURRENT|MCL_FUTURE)) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        errlogPrintf(<span class="stringliteral">&quot;mlockall error %s\n&quot;</span>, strerror(errno));</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="group__memlock.html#ga2be3b3dce5d3aa59fd03a58ad6837f75">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group__memlock.html#ga2be3b3dce5d3aa59fd03a58ad6837f75" title="iocShell: Unlock process virtual memory from RAM.">mcoreMUnlock</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (munlockall()) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        errlogPrintf(<span class="stringliteral">&quot;munlockall error %s\n&quot;</span>, strerror(errno));</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 13 2013 14:21:07 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 14 2013 13:47:54 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

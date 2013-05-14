@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">EPICS Multi-Core Utilities
-   &#160;<span id="projectnumber">1.1.2-SNAPSHOT</span>
+   &#160;<span id="projectnumber">1.2</span>
    </div>
    <div id="projectbrief">Real-Time Utilities for EPICS IOCs on Multi-Core Linux</div>
   </td>
@@ -100,7 +100,9 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>Add functions for locking the process memory into RAM. </p>
 <p>Adds functions that allow locking and unlocking the process virtual memory into RAM to make sure no page faults occur, which would introduce unpredictable interruptions and latency.</p>
-<dl class="section see"><dt>See Also</dt><dd>See man page for <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/mlockall.2.html">mlockall(2)</a> for more details on memory locking. </dd></dl>
+<p>See man page for <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/mlockall.2.html">mlockall(2)</a> for more details on memory locking.</p>
+<dl class="section user"><dt>Linux Security</dt><dd>To allow locking all its memory, under modern Linux systems the process must have a <code>memlock</code> entry in the pam limits module configuration. </dd></dl>
+<dl class="section user"><dt></dt><dd>See the <a href="http://linux.die.net/man/5/limits.conf">limits.conf(5)</a> man page for details. </dd></dl>
 <h2>Function Documentation</h2>
 <a class="anchor" id="ga401b966ea0ad8c0d74c6aa4fe1b1bbca"></a>
 <div class="memitem">
@@ -119,7 +121,7 @@ Functions</h2></td></tr>
 <p><b>iocShell:</b> Lock all process virtual memory into RAM. </p>
 <dl class="section user"><dt>IOC Shell</dt><dd><code><b>mcoreMLock</b></code> </dd></dl>
 
-<p>Definition at line <a class="el" href="mem_lock_8c_source.html#l00032">32</a> of file <a class="el" href="mem_lock_8c_source.html">memLock.c</a>.</p>
+<p>Definition at line <a class="el" href="mem_lock_8c_source.html#l00034">34</a> of file <a class="el" href="mem_lock_8c_source.html">memLock.c</a>.</p>
 
 </div>
 </div>
@@ -140,14 +142,14 @@ Functions</h2></td></tr>
 <p><b>iocShell:</b> Unlock process virtual memory from RAM. </p>
 <dl class="section user"><dt>IOC Shell</dt><dd><code><b>mcoreMUnlock</b></code> </dd></dl>
 
-<p>Definition at line <a class="el" href="mem_lock_8c_source.html#l00038">38</a> of file <a class="el" href="mem_lock_8c_source.html">memLock.c</a>.</p>
+<p>Definition at line <a class="el" href="mem_lock_8c_source.html#l00040">40</a> of file <a class="el" href="mem_lock_8c_source.html">memLock.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 13 2013 14:21:07 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 14 2013 13:47:54 for EPICS Multi-Core Utilities by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
