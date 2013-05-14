@@ -19,6 +19,8 @@
  */
 
 #include <stdio.h>
+#include <string.h>
+#include <errno.h>
 #include <sys/mman.h>
 
 #include <errlog.h>
@@ -31,13 +33,13 @@
 
 void mcoreMLock(void) {
     if (mlockall(MCL_CURRENT|MCL_FUTURE)) {
-        errlogPrintf("mcoreMLock: mlockall() failed\n");
+        errlogPrintf("mlockall error %s\n", strerror(errno));
     }
 }
 
 void mcoreMUnlock(void) {
     if (munlockall()) {
-        errlogPrintf("mcoreMLock: munlockall() failed\n");
+        errlogPrintf("munlockall error %s\n", strerror(errno));
     }
 }
 
