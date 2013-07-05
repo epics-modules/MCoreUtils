@@ -130,7 +130,7 @@ static const iocshArg *const mcoreThreadModifyArgs[] = {
 static const iocshFuncDef mcoreThreadModifyDef =
     {"mcoreThreadModify", 4, mcoreThreadModifyArgs};
 static void mcoreThreadModifyCall(const iocshArgBuf * args) {
-    epicsThreadId tid = getThreadIdFor(args[0].sval);;
+    epicsThreadId tid;
     int i;
     char missing = 0;
 
@@ -141,6 +141,7 @@ static void mcoreThreadModifyCall(const iocshArgBuf * args) {
         printf("Missing argument\nUsage: mcoreThreadModify thread  policy  priority  cpuset\n");
         return;
     }
+    tid = getThreadIdFor(args[0].sval);
     if (tid)
         mcoreThreadModify(tid, args[1].sval, args[2].sval, args[3].sval);
 }
