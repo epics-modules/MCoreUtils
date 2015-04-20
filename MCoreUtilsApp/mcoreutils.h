@@ -2,7 +2,7 @@
  * @file
  * @author Ralph Lange <Ralph.Lange@gmx.de>
  * @copyright
- * Copyright (c) 2012 ITER Organization
+ * Copyright (c) 2012,2015 ITER Organization
  * @copyright
  * Distributed subject to the EPICS_BASE Software License Agreement found
  * in the file LICENSE that is included with this distribution.
@@ -63,20 +63,20 @@
  * Details can be found in the documentation for module @ref memlock.
  *
  * @section sources Sources
- * Releases can be found at http://sourceforge.net/projects/epics/files/mcoreutils/
+ * The sources are on GitHub at https://github.com/ralphlange/MCoreUtils
  *
- * The sources are versioned using [Mercurial](http://mercurial.selenic.com).
- * They can be viewed at http://epics.hg.sourceforge.net/hgweb/epics/mcoreutils/
- * or checked out using
+ * They can be checked out using
  * ~~~~
- * hg clone http://epics.hg.sourceforge.net:8000/hgroot/epics/mcoreutils
+ * git clone https://github.com/ralphlange/MCoreUtils.git
  * ~~~~
+ *
+ * Releases can be found on GitHub (see above)
+ * or at http://sourceforge.net/projects/epics/files/mcoreutils/
  *
  * @section requires Requirements
  * @li Linux operating system
  * @li [EPICS](http://www.aps.anl.gov/epics/)
- *     [BASE 3.15](https://code.launchpad.net/~epics-core/epics-base/3.15) trunk
- *     revision 12372 (2012-09-20) or later
+ *     [BASE 3.15](http://www.aps.anl.gov/epics/base/R3-15/index.php) (3.15.1 or later)
  *
  * @section Installation
  * @li Unpack the distribution tar or check out the source tree.
