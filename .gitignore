@@ -1,0 +1,17 @@
+# Object and generated files
+O.*/
+
+# EPICS installation dirs
+/bin/
+/lib/
+/db/
+/dbd/
+/html/
+/doc/
+
+# Local configuration
+*.local
+
+# IDE configuration
+/QtC-*
+.deps
