@@ -48,7 +48,7 @@ EOF
 
 make distclean all
 if [ "${BUILD_DOCS}" ]; then
-    doxygen
+    ( cd MCoreUtilsApp; doxygen; )
 fi
 
 ###########################################
@@ -65,5 +65,5 @@ tar -czf MCoreUtils.CB-dist.tar.gz lib include dbd COPYRIGHT LICENSE
 # Publish documentation
 
 if [ "${BUILD_DOCS}" ]; then
-    rsync -aqP --delete -e ssh documentation epics-jenkins@web.sourceforge.net:/home/project-web/epics/mcoreutils
+    rsync -aqP --delete -e ssh MCoreUtils/documentation/MCoreUtils epics-jenkins@web.sourceforge.net:/home/project-web/epics/mcoreutils
 fi
