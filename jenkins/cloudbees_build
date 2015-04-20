@@ -59,7 +59,7 @@ fi
 ###########################################
 # Create distribution
 
-tar -czf MCOreUtils.CB-dist.tar.gz lib include dbd COPYRIGHT LICENSE
+tar -czf MCoreUtils.CB-dist.tar.gz lib include dbd COPYRIGHT LICENSE
 
 ###########################################
 # Publish documentation
