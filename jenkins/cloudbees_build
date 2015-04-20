@@ -65,5 +65,5 @@ tar -czf MCoreUtils.CB-dist.tar.gz lib dbd LICENSE
 # Publish documentation
 
 if [ "${BUILD_DOCS}" ]; then
-    rsync -aqP --delete -e ssh MCoreUtils/documentation/MCoreUtils epics-jenkins@web.sourceforge.net:/home/project-web/epics/mcoreutils
+    rsync -aqP --delete -e ssh MCoreUtils/documentation/MCoreUtilsApp epics-jenkins@web.sourceforge.net:/home/project-web/epics/mcoreutils
 fi
