@@ -53,9 +53,13 @@ static const iocshArg *const mcoreThreadShowArgs[] = {
 static const iocshFuncDef mcoreThreadShowDef =
     {"mcoreThreadShow", 2, mcoreThreadShowArgs};
 static void mcoreThreadShowCall(const iocshArgBuf * args) {
-    epicsThreadId tid = getThreadIdFor(args[0].sval);
+    epicsThreadId tid;
     unsigned int level = args[1].ival;
-
+    if (!args[0].sval) {
+        printf("Missing argument\nUsage: mcoreThreadShow thread [level]\n");
+        return;
+    }
+    tid = getThreadIdFor(args[0].sval);
     if (tid) {
         mcoreThreadShow(  0, level);
         mcoreThreadShow(tid, level);
@@ -108,7 +112,7 @@ static const iocshFuncDef mcoreThreadRuleDeleteDef =
     {"mcoreThreadRuleDelete", 1, mcoreThreadRuleDeleteArgs};
 static void mcoreThreadRuleDeleteCall(const iocshArgBuf * args) {
     if (NULL == args[0].sval) {
-        printf("Missing name argument\n");
+        printf("Missing argument\nUsage: mcoreThreadRuleDelete name\n");
         return;
     }
     mcoreThreadRuleDelete(args[0].sval);
