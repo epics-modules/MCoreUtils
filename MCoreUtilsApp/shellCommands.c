@@ -3,7 +3,7 @@
  * @brief iocShell registration of MCoreUtils commands.
  * @author Ralph Lange <Ralph.Lange@gmx.de>
  * @copyright
- * Copyright (c) 2012 ITER Organization
+ * Copyright (c) 2012,2015 ITER Organization
  * @copyright
  * Distributed subject to the EPICS_BASE Software License Agreement found
  * in the file LICENSE that is included with this distribution.
@@ -29,6 +29,7 @@ static epicsThreadId getThreadIdFor(const char* thread) {
     unsigned long ltmp;
     char *endp;
 
+    if (!thread) return 0;
     cp = thread;
     ltmp = strtoul(cp, &endp, 0);
     if (*endp) {
