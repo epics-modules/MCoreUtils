@@ -14,10 +14,9 @@ DBD += mcutest.dbd
 
 # mcutest.dbd will be made up from these files:
 mcutest_DBD += base.dbd
-mcutest_DBD += $(TOP)/dbd/mcoreutils.dbd
 
 # Include dbd files from all support applications:
-#mcutest_DBD += xxx.dbd
+mcutest_DBD += mcoreutils.dbd
 
 # Add all the support libraries needed by this IOC
 mcutest_LIBS += mcoreutils

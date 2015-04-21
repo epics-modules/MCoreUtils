@@ -1,3 +1,16 @@
 #RULES_TOP
 include $(CONFIG)/RULES_TOP
 
+EMTOPACTIONS += cvsclean realuninstall
+
+distclean: emtop_distclean
+
+emtopDistcleanTargets += $(foreach dir, $(filter %Top,$(DIRS)), \
+                         $(dir)$(DIVIDER)emtop_dummy_action)
+
+$(emtopDistcleanTargets) :
+	$(MAKE) -C $(dirPart) $(EMTOPACTIONS)
+
+emtop_distclean : $(emtopDistcleanTargets)
+
+.PHONY : $(emtopDistcleanTargets)
