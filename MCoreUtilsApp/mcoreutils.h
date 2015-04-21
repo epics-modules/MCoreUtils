@@ -63,11 +63,11 @@
  * Details can be found in the documentation for module @ref memlock.
  *
  * @section sources Sources
- * The sources are on GitHub at https://github.com/ralphlange/MCoreUtils
+ * The sources are on GitHub at https://github.com/epics-modules/MCoreUtils
  *
  * They can be checked out using
  * ~~~~
- * git clone https://github.com/ralphlange/MCoreUtils.git
+ * git clone https://github.com/epics-modules/MCoreUtils.git
  * ~~~~
  *
  * Releases can be found on GitHub (see above)
