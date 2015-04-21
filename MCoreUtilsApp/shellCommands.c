@@ -56,8 +56,10 @@ static void mcoreThreadShowCall(const iocshArgBuf * args) {
     epicsThreadId tid = getThreadIdFor(args[0].sval);
     unsigned int level = args[1].ival;
 
-    if (tid)
+    if (tid) {
+        mcoreThreadShow(  0, level);
         mcoreThreadShow(tid, level);
+    }
 }
 
 static const iocshArg mcoreThreadShowAllArg0 = {"level", iocshArgInt};
