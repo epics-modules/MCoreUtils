@@ -29,7 +29,7 @@ epicsShareDef int cpuDigits;
 void strToCpuset(cpu_set_t *cpuset, const char *spec)
 {
     char *buff = strdup(spec);
-    char *tok, *save;
+    char *tok, *save = NULL;
 
     CPU_ZERO(cpuset);
 
