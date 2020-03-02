@@ -353,12 +353,30 @@ epicsShareFunc void mcoreThreadRulesShow(void);
  * <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/mlockall.2.html">mlockall(2)</a>
  * for more details on memory locking.
 
- * @par Linux Security
+ * @par Linux Security (non-systemd)
  * To allow locking all its memory, under modern Linux systems the process must have a @c memlock
  * entry in the pam limits module configuration.
  * @par
  * See the <a href="http://linux.die.net/man/5/limits.conf">limits.conf(5)</a>
  * man page for details.
+ *
+ * @par Linux Security (systemd)
+ * If an IOC process is started by systemd the following configuration is
+ * required in the unit file to grant the IOC process permission to adjust
+ * real-time priorities as well as to lock memory:
+ * ```
+ * [Service]
+ * LimitMEMLOCK=infinity
+ * LimitRTPRIO=99
+ * ```
+ * Refer to the <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html">
+ * systemd documentation</a> for details.
+ *
+ * @par Use with EPICS >=3.15.4
+ * Starting with EPICS Base 3.15.4, IOCs are automatically calling @c mlockall
+ * if the IOC process is allowed to set different thread priorities (that is if
+ * <tt>sched_get_priority_max() > sched_get_priority_min()</tt>). The following
+ * commands are thus only needed with older IOCs as well as for troubleshooting.
  */
 
 /**
