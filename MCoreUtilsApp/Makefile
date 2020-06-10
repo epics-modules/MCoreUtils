@@ -9,7 +9,7 @@ include $(TOP)/configure/CONFIG
 # Re-generate it by calling
 #    make doxy
 
-VERSION = 1.2.2
+VERSION = 1.2.3-SNAPSHOT
 
 #==================================================
 # build a support library  (Linux ONLY)
