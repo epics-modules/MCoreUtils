@@ -12,6 +12,8 @@ cache:
 env:
   global:
     - SETUP_PATH=.ci
+    - BASE_RECURSIVE=NO
+    - BASE=7.0
 
 addons:
   apt:
@@ -22,20 +24,6 @@ addons:
     - perl
     # for clang compiler
     - clang
-    # for mingw builds (32bit and 64bit)
-    - g++-mingw-w64-i686
-    - g++-mingw-w64-x86-64
-    # for RTEMS cross builds
-    - qemu-system-x86
-  homebrew:
-    packages:
-    # for all EPICS builds
-    - bash
-    # for the sequencer
-    - re2c
-    # For libnet headers
-    - libnet
-    update: true
 
 install:
   - ./.ci/travis/prepare.sh
@@ -68,17 +56,19 @@ jobs:
 
 # Default gcc and clang, static build
 
-  - env: BASE=7.0
+  - compiler: gcc
 
-  - env: BASE=7.0
-    compiler: clang
+  - env: BASE=R7.0.4
 
-  - env: BASE=7.0 STATIC=YES
+  - compiler: clang
+
+  - env: STATIC=YES
+
+  - dist: bionic
 
 # Trusty: compiler versions very close to RHEL 7
 
-  - env: BASE=7.0
-    dist: trusty
+  - dist: trusty
 
 # # Older Base releases
 
