@@ -16,6 +16,7 @@
 #include <unistd.h>
 
 #include <errlog.h>
+#include <shareLib.h>
 
 // TODO: Use libCom call when get-cpus branch is merged
 #define NO_OF_CPUS sysconf(_SC_NPROCESSORS_CONF)
@@ -34,7 +35,7 @@ extern "C" {
  *
  * Set in mcoreThreadShowInit().
  */
-extern int cpuDigits;
+epicsShareExtern int cpuDigits;
 
 void strToCpuset(cpu_set_t *cpuset, const char *spec);
 void cpusetToStr(char *set, size_t len, const cpu_set_t *cpuset);

@@ -15,7 +15,11 @@
 #include <string.h>
 
 #include <errlog.h>
+#include <shareLib.h>
 
+/// @cond NEVER
+#define epicsExportSharedSymbols
+/// @endcond
 #include "utils.h"
 
 epicsShareDef int cpuDigits;
