@@ -121,6 +121,8 @@ long mcoreThreadRuleAdd(const char *name, const char *policy, const char *priori
     prule->cpus    = strdup(cpus);
     if (!prule->name || !prule->pattern || !prule->cpus) {
         errlogPrintf("Memory allocation error\n");
+        free(prule->name); free(prule->pattern); free(prule->cpus);
+        free(prule);
         return -1;
     }
 
