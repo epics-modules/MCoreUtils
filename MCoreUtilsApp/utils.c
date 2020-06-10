@@ -63,12 +63,13 @@ void strToCpuset(cpu_set_t *cpuset, const char *spec)
 void cpusetToStr(char *set, size_t len, const cpu_set_t *cpuset)
 {
     int cpu = 0;
-    int from, to, l;
+    int l;
     char buf[cpuDigits*2+3];
 
     if (!set || !len) return;
     set[0] = '\0';
     while (cpu < NO_OF_CPUS) {
+        int from, to;
         while (!CPU_ISSET(cpu, cpuset) && cpu < NO_OF_CPUS) {
             cpu++;
         }

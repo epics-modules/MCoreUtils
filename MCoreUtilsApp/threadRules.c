@@ -210,7 +210,6 @@ void mcoreThreadRulesShow(void)
 static void modifyRTProperties(epicsThreadId id, threadRule *prule)
 {
     int status;
-    unsigned int priority;
 
     if (prule->ch_policy || prule->ch_priority) {
         status = pthread_attr_getschedparam(&id->attr, &id->schedParam);
@@ -233,6 +232,7 @@ static void modifyRTProperties(epicsThreadId id, threadRule *prule)
         }
 
         if (prule->ch_priority) {
+            unsigned int priority;
             if (prule->rel_priority) {
                 priority = id->osiPriority + prule->priority;
                 if (priority > epicsThreadPriorityMax) priority = epicsThreadPriorityMax;
@@ -308,8 +308,6 @@ static int readRulesFromFile(const char *file)
     const int linelen = 256;
     const char sep = ':';
     char line[linelen];
-    unsigned int lineno = 0;
-    char *args[5];           // rtgroups format -- name:policy:priority:affinity:pattern
     int count = 0;
 
     FILE *fp = fopen(file, "r");
@@ -317,6 +315,8 @@ static int readRulesFromFile(const char *file)
         if (errVerbose)
             errlogPrintf("mcoreThreadRules: can't open rules file %s\n", file);
     } else {
+        unsigned int lineno = 0;
+        char *args[5];           // rtgroups format -- name:policy:priority:affinity:pattern
         while (fgets(line, linelen, fp)) {
             int i;
             char *sp;
