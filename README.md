@@ -53,7 +53,9 @@ mcutest_LIBS += mcoreutils
 ...
 ```
 
-That's it. Enjoy!
+### Documentation
+
+Complete documentation available at http://epics-modules.github.io/MCoreUtils/
 
 <!-- Links -->
 [badge.version]: https://badge.fury.io/gh/epics-modules%2FMCoreUtils.svg
