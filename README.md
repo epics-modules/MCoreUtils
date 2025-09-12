@@ -1,6 +1,6 @@
-<a target="_blank" href="http://semver.org">![Version][badge.version]</a>
-<a target="_blank" href="https://travis-ci.org/github/epics-modules/MCoreUtils">![Travis status][badge.travis]</a>
-<a target="_blank" href="https://app.codacy.com/gh/epics-modules/MCoreUtils">![Codacy grade][badge.codacy]</a>
+[![Version](https://badge.fury.io/gh/epics-modules%2FMCoreUtils.svg)](https://badge.fury.io/gh/epics-modules%2FMCoreUtils)
+[![Build](https://github.com/epics-modules/asyn/actions/workflows/ci-scripts.yml/badge.svg)](https://github.com/epics-modules/asyn/actions/workflows/ci-scripts.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2d7369287f414c698493a1a4cadd7a7a)](https://app.codacy.com/gh/epics-modules/MCoreUtils/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 # MCoreUtils
 ## Real-Time Utilities for EPICS IOCs on Multi-Core Linux
@@ -56,8 +56,3 @@ mcutest_LIBS += mcoreutils
 ### Documentation
 
 Complete documentation available at http://epics-modules.github.io/MCoreUtils/
-
-<!-- Links -->
-[badge.version]: https://badge.fury.io/gh/epics-modules%2FMCoreUtils.svg
-[badge.travis]: https://travis-ci.org/epics-modules/MCoreUtils.svg?branch=master
-[badge.codacy]: https://app.codacy.com/project/badge/Grade/22fd07b642a444f7975e00f27aec2479
