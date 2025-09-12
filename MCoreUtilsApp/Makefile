@@ -39,6 +39,11 @@ include $(TOP)/configure/RULES
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE
 
+# needed for Base >= 7.0.9
+$(COMMON_DIR)/%: ../documentation/%
+	@$(CP) $< $@
+
+# needed for Base <= 7.0.8.1
 $(INSTALL_DOC)/%: ../documentation/%
 	$(ECHO) "Installing doc $@"
 	@$(INSTALL) -d -m $(INSTALL_PERMISSIONS) $< $(INSTALL_DOC)
