@@ -1,0 +1,244 @@
+# .github/workflows/ci-scripts-build.yml for use with EPICS Base ci-scripts
+# (see: https://github.com/epics-base/ci-scripts)
+
+# This is YAML - indentation levels are crucial
+
+# Workflow name, shared by all branches
+
+name: ci-scripts build
+
+# Trigger on pushes and PRs to any branch
+on:
+  push:
+    paths-ignore:
+      - 'documentation/*'
+      - '.gitattributes'
+      - '**/*.html'
+      - '**/*.md'
+  pull_request:
+    paths-ignore:
+      - 'documentation/*'
+      - '.gitattributes'
+      - '**/*.html'
+      - '**/*.md'
+  workflow_dispatch:
+
+env:
+    SETUP_PATH: .ci-local:.ci
+    BASE_RECURSIVE: NO
+
+jobs:
+  native:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    # Set environment variables from matrix parameters
+    env:
+      CMP: ${{ matrix.cmp }}
+      BCFG: ${{ matrix.configuration }}
+      BASE: ${{ matrix.base }}
+      EXTRA: ${{ matrix.extra }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # Job names also name artifacts, character limitations apply
+        include:
+          - os: ubuntu-24.04
+            base: "7.0"
+            cmp: gcc
+            configuration: default
+            name: "Ub-24 base-7.0 gcc"
+
+          - os: ubuntu-24.04
+            base: "7.0"
+            cmp: gcc
+            configuration: static
+            extra: "CMD_CXXFLAGS=-std=c++11"
+            name: "Ub-24 base-7.0 gcc C++11, static"
+
+          - os: ubuntu-24.04
+            base: "7.0"
+            cmp: clang
+            configuration: default
+            name: "Ub-24 base-7.0 clang"
+
+          - os: ubuntu-24.04
+            base: "3.15"
+            cmp: gcc
+            configuration: default
+            name: "Ub-24 base-3.15 gcc"
+
+          - os: ubuntu-24.04
+            base: "R7.0.8.1"
+            cmp: gcc
+            configuration: default
+            name: "Ub-24 base-7.0.8 gcc"
+
+          # Cross builds
+
+          - os: ubuntu-latest
+            cmp: gcc
+            configuration: default
+            name: "Cross linux-aarch64"
+            cross: linux-aarch64
+
+          - os: ubuntu-latest
+            cmp: gcc
+            configuration: default
+            name: "Cross linux-arm gnueabi"
+            cross: linux-arm@arm-linux-gnueabi
+
+          - os: ubuntu-latest
+            cmp: gcc
+            configuration: default
+            name: "Cross linux-arm gnueabihf"
+            cross: linux-arm@arm-linux-gnueabihf
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    - name: Automatic core dumper analysis
+      uses: mdavidsaver/ci-core-dumper@master
+    - name: "apt-get install"
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install gdb
+      if: runner.os == 'Linux'
+    - name: Prepare and compile dependencies
+      run: python .ci/cue.py prepare
+    - name: Build main module
+      run: python .ci/cue.py build
+    - name: Run main module tests
+      run: python .ci/cue.py -T 60M test
+    - name: Upload tapfiles Artifact
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: tapfiles ${{ matrix.name }}
+        path: '**/O.*/*.tap'
+        if-no-files-found: ignore
+    - name: Collect and show test results
+      if: ${{ always() }}
+      run: python .ci/cue.py -T 5M test-results
+
+  docker:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ matrix.image }}
+    # Set environment variables from matrix parameters
+    env:
+      CMP: ${{ matrix.cmp }}
+      BCFG: ${{ matrix.configuration }}
+      EXTRA: ${{ matrix.extra }}
+      TEST: ${{ matrix.test }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # Job names also name artifacts, character limitations apply
+        include:
+          - name: "CentOS-8"
+            image: centos:8
+            cmp: gcc
+            configuration: default
+
+          - name: "Rocky-9"
+            image: rockylinux:9
+            cmp: gcc
+            configuration: default
+
+          - name: "Fedora-33"
+            image: fedora:33
+            cmp: gcc
+            configuration: default
+
+          - name: "Fedora-latest"
+            image: fedora:latest
+            cmp: gcc
+            configuration: default
+
+    steps:
+    - name: "Fix repo URLs on CentOS-8"
+      # centos:8 is frozen, repos are in the vault
+      if: matrix.image=='centos:8'
+      run: |
+        sed -i -e "s|mirrorlist=|#mirrorlist=|" \
+        -e "s|#baseurl=http://mirror|baseurl=http://vault|" \
+        /etc/yum.repos.d/CentOS-Linux-{BaseOS,AppStream,Extras,Plus}.repo
+    - name: "Redhat setup"
+      run: |
+        dnf -y install python3 gdb make perl gcc-c++ glibc-devel readline-devel ncurses-devel perl-devel perl-Test-Simple
+        git --version || dnf -y install git
+        python3 --version
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    - name: Automatic core dumper analysis
+      uses: mdavidsaver/ci-core-dumper@master
+    - name: Prepare and compile dependencies
+      run: python3 .ci/cue.py prepare
+    - name: Build main module
+      run: python3 .ci/cue.py build
+    - name: Run main module tests
+      run: python3 .ci/cue.py -T 20M test
+    - name: Upload tapfiles Artifact
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: tapfiles ${{ matrix.name }}
+        path: '**/O.*/*.tap'
+        if-no-files-found: ignore
+    - name: Collect and show test results
+      if: ${{ always() }}
+      run: python3 .ci/cue.py -T 5M test-results
+
+  build-docker:
+    name: Docker CentOS-7
+    runs-on: ubuntu-latest
+    env:
+      CMP: gcc
+      BCFG: default
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    
+    - name: Run...
+      run: |
+        env > env.list
+        cat <<EOF > runit.sh
+        #!/bin/sh
+        set -e -x
+        cd /io
+        id
+
+        sed -i s/mirror.centos.org/vault.centos.org/g /etc/yum.repos.d/*.repo
+        sed -i s/^#.*baseurl=http/baseurl=http/g /etc/yum.repos.d/*.repo
+        sed -i s/^mirrorlist=http/#mirrorlist=http/g /etc/yum.repos.d/*.repo
+        yum -y install epel-release
+        yum -y install \
+          curl make gcc curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker \
+          python3 gdb make perl gcc-c++ glibc-devel readline-devel ncurses-devel perl-devel perl-Test-Simple \
+          libevent-devel sudo re2c perl-version
+        [ -e /usr/bin/python ] || ln -sf /usr/bin/python3 /usr/bin/python
+
+        # fake out cue.py
+        ln -s /bin/true /usr/bin/apt-get
+
+        # quiet warnings spam from perl
+        export LANG=C
+
+        python --version
+        python .ci/cue.py prepare
+        python .ci/cue.py build
+        python .ci/cue.py -T 15M test
+        python .ci/cue.py test-results
+        EOF
+        chmod +x runit.sh
+        docker run --rm --quiet \
+          --pull=always \
+          --env-file env.list \
+          -v `pwd`:/io \
+          centos:7 \
+          /io/runit.sh
