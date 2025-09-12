@@ -1,5 +1,5 @@
 [![Version](https://badge.fury.io/gh/epics-modules%2FMCoreUtils.svg)](https://badge.fury.io/gh/epics-modules%2FMCoreUtils)
-[![Build](https://github.com/epics-modules/asyn/actions/workflows/ci-scripts.yml/badge.svg)](https://github.com/epics-modules/asyn/actions/workflows/ci-scripts.yml)
+[![ci-scripts build](https://github.com/epics-modules/MCoreUtils/actions/workflows/ci-scripts-build.yml/badge.svg)](https://github.com/epics-modules/MCoreUtils/actions/workflows/ci-scripts-build.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2d7369287f414c698493a1a4cadd7a7a)](https://app.codacy.com/gh/epics-modules/MCoreUtils/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 # MCoreUtils
