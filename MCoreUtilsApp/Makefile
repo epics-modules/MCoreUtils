@@ -31,7 +31,7 @@ mcoreutils_LIBS += $(EPICS_BASE_IOC_LIBS)
 INSTALL_DOCS += $(INSTALL_HTML)/MCoreUtils
 DOCS += MCoreUtils.pdf
 
-USR_CFLAGS = -D_GNU_SOURCE -DVERSION=\"$(VERSION)\"
+USR_CFLAGS += -D_GNU_SOURCE -DVERSION=\"$(VERSION)\"
 
 #===========================
 
